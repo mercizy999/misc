@@ -388,7 +388,6 @@ extern unsigned int __machine_arch_type;
 #define MACH_TYPE_LILLY1131            2239
 #define MACH_TYPE_HMT                  2254
 #define MACH_TYPE_VEXPRESS             2272
-#define MACH_TYPE_REALVIEW             2272
 #define MACH_TYPE_D2NET                2282
 #define MACH_TYPE_BIGDISK              2283
 #define MACH_TYPE_AT91SAM9G20EK_2MMC   2288

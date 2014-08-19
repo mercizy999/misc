@@ -10,13 +10,14 @@
 #define __ASM_ARCH_UART_H_
 
 #ifndef __ASSEMBLY__
+
 /* baudrate rest value */
 union br_rest {
 	unsigned short	slot;		/* udivslot */
 	unsigned char	value;		/* ufracval */
 };
 
-struct s5p_uart {
+struct exynos4_uart {
 	unsigned int	ulcon;
 	unsigned int	ucon;
 	unsigned int	ufcon;
@@ -34,7 +35,7 @@ struct s5p_uart {
 	unsigned char	res3[0xffd0];
 };
 
-static inline int s5p_uart_divslot(void)
+static inline int exynos4_uart_divslot(void)
 {
 	return 0;
 }

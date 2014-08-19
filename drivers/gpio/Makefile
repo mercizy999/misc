@@ -19,6 +19,7 @@ COBJS-$(CONFIG_MXS_GPIO)	+= mxs_gpio.o
 COBJS-$(CONFIG_PCA953X)		+= pca953x.o
 COBJS-$(CONFIG_PCA9698)		+= pca9698.o
 COBJS-$(CONFIG_S5P)		+= s5p_gpio.o
+COBJS-$(CONFIG_EXYNOS4)		+= exynos4_gpio.o
 COBJS-$(CONFIG_SANDBOX_GPIO)	+= sandbox.o
 COBJS-$(CONFIG_SPEAR_GPIO)	+= spear_gpio.o
 COBJS-$(CONFIG_TEGRA_GPIO)	+= tegra_gpio.o

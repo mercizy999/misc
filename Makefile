@@ -69,6 +69,7 @@ endif
 
 # select architecture: powerpc arm x86
 export ARCH=arm
+# export ARCH=powerpc
 
 # ARM
 ifeq ($(ARCH),arm)
@@ -76,8 +77,8 @@ export CROSS_COMPILE=arm-qhao-linux-gnueabi-
 # below shall be added to arch/arm/boot/Makefile Ln57
 export CP_IMAGE=$(CROSS_COMPILE)objdump -h $< > ~/Desktop/share/bootdump.txt; \
         $(CROSS_COMPILE)objdump -t $< >> ~/Desktop/share/bootdump.txt; \
-        $(CROSS_COMPILE)objdump -d $< >> ~/Desktop/share/bootdump.txt; \
-		cp $@ ~/Desktop/$(ARCH)/qemu_img_my/u-boot.bin
+        $(CROSS_COMPILE)objdump -D $< >> ~/Desktop/share/bootdump.txt; \
+		cp $@ ~/Desktop/$(ARCH)/qemu_img/u-boot.bin
 endif
 
 ifeq ($(ARCH),powerpc)
@@ -85,7 +86,7 @@ export CROSS_COMPILE=powerpc-linux-
 # below shall be added to arch/powerpc/boot/Makefile Ln333
 export CP_IMAGE=$(CROSS_COMPILE)objdump -h $< > ~/Desktop/share/bootdump.txt; \
         $(CROSS_COMPILE)objdump -t $< >> ~/Desktop/share/bootdump.txt; \
-        $(CROSS_COMPILE)objdump -d $< >> ~/Desktop/share/bootdump.txt; \
+        $(CROSS_COMPILE)objdump -D $< >> ~/Desktop/share/bootdump.txt; \
         cp $< ~/Desktop/share/uboot
 endif
 
@@ -94,7 +95,7 @@ ifeq ($(ARCH),x86)
 # below shall be added to arch/x86/boot/Makefile Ln79
 export CP_IMAGE=$(CROSS_COMPILE)objdump -h $< > ~/Desktop/share/bootdump.txt; \
         $(CROSS_COMPILE)objdump -t $< >> ~/Desktop/share/bootdump.txt; \
-        $(CROSS_COMPILE)objdump -d $< >> ~//Desktop/share/bootdump.txt; \
+        $(CROSS_COMPILE)objdump -D $< >> ~//Desktop/share/bootdump.txt; \
         cp $< ~/Desktop/$(ARCH)/qemu_img/u-boot
 endif
 

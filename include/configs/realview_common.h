@@ -258,13 +258,14 @@
 	"bootm $loadaddr $ramdiskaddr"
 #else
 #define CONFIG_RAMBOOT_COMMAND \
-	"setenv bootargs root=/dev/ram rw console = ttyAMA0;" \
+	"setenv bootargs root=/dev/ram rw init=/linuxrc console=ttyAMA0;" \
 	"tftp 7f000000 uRamDisk;" \
 	"tftp 7e000000 uImage;" \
 	"bootm 7e000000 7f000000"
 #endif
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
+	"bootargs=root=/dev/ram rw init=/linuxrc console=ttyAMA0\0" \
 	"netdev=eth0\0" \
 	"consoledev=ttyAMA0\0" \
 	"loadaddr=7e000000\0" \

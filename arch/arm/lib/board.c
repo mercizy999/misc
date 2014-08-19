@@ -302,11 +302,13 @@ void board_init_f(ulong bootflag)
 			"doc/README.fdt-control");
 	}
 #endif
-
 	debug("monitor len: %08lX\n", gd->mon_len);
 	/*
 	 * Ram is setup, size stored in gd !!
 	 */
+
+/* qhao - set dram_size, cause dram_init() failed */
+	gd->ram_size = 0x40000000;
 	debug("ramsize: %08lX\n", gd->ram_size);
 #if defined(CONFIG_SYS_MEM_TOP_HIDE)
 	/*
@@ -375,7 +377,8 @@ void board_init_f(ulong bootflag)
 	addr -= gd->mon_len;
 	addr &= ~(4096 - 1);
 
-	addr = 0x8fe10000; /* qhao */
+	/* qhao - set load address */
+	addr = 0x7fa10000; 
 	debug("Reserving %ldk for U-Boot at: %08lx\n", gd->mon_len >> 10, addr);
 
 #ifndef CONFIG_SPL_BUILD
@@ -507,6 +510,11 @@ static void display_fdt_model(const void *blob)
  ************************************************************************
  */
 
+int Test02(void)
+{
+	return 2;
+}
+
 void board_init_r(gd_t *id, ulong dest_addr)
 {
 	ulong malloc_start;
@@ -521,7 +529,6 @@ void board_init_r(gd_t *id, ulong dest_addr)
 
 	/* Enable caches */
 	enable_caches();
-
 	debug("monitor flash len: %08lX\n", monitor_flash_len);
 	board_init();	/* Setup chipselects */
 	/*

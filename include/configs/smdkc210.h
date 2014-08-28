@@ -74,7 +74,7 @@
 #define CONFIG_CMD_NET
 #define CONFIG_CMD_FAT
 
-#define CONFIG_BOOTDELAY		3
+#define CONFIG_BOOTDELAY		1
 #define CONFIG_ZERO_BOOTDELAY_CHECK
 
 /* MMC SPL */
@@ -91,19 +91,22 @@
 #define CONFIG_GATEWAYIP 192.168.2.100
 
 #define CONFIG_RAMBOOT_COMMAND \
-		"setenv bootargs root=/dev/ram rw init=/linuxrc console=ttyAMA0;" \
-	"tftp 7f000000 uRamDisk;" \
-	"tftp 7e000000 uImage;" \
-	"bootm 7e000000 7f000000"
+	"setenv $bootargs;" \
+	"tftp $loadaddr $loadfile;" \
+	"tftp $ramdiskaddr $ramdiskfile;" \
+	"tftp $dtbaddr $dtbfile;" \
+	"bootm $loadaddr $ramdiskaddr $dtbaddr"
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
-		"bootargs=root=/dev/ram rw init=/linuxrc console=ttyAMA0\0" \
+	"bootargs=root=/dev/ram rw init=/linuxrc console=ttySAC0\0" \
 	"netdev=eth0\0" \
 	"consoledev=ttyAMA0\0" \
-	"loadaddr=7e000000\0" \
+	"loadaddr=7d000000\0" \
 	"bootfile=uImage\0" \
-	"ramdiskaddr=7f000000\0" \
+	"ramdiskaddr=7e000000\0" \
 	"ramdiskfile=uRamDisk\0" \
+	"dtbaddr=7f000000\0" \
+	"dtbfile=smdkc210.dtb" \
 	""
 
 #define CONFIG_BOOTCOMMAND CONFIG_RAMBOOT_COMMAND

@@ -98,9 +98,7 @@
 	"bootm $loadaddr $ramdiskaddr $dtbaddr"
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
-	"bootargs=root=/dev/ram rw init=/linuxrc console=ttySAC0\0" \
 	"netdev=eth0\0" \
-	"consoledev=ttyAMA0\0" \
 	"loadaddr=7d000000\0" \
 	"bootfile=uImage\0" \
 	"ramdiskaddr=7e000000\0" \

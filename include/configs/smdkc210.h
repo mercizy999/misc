@@ -91,7 +91,6 @@
 #define CONFIG_GATEWAYIP 192.168.2.100
 
 #define CONFIG_RAMBOOT_COMMAND \
-	"setenv $bootargs;" \
 	"tftp $loadaddr $loadfile;" \
 	"tftp $ramdiskaddr $ramdiskfile;" \
 	"tftp $dtbaddr $dtbfile;" \

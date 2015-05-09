@@ -16,7 +16,10 @@
 
 /* Ram */
 #define CONFIG_NR_DRAM_BANKS		1
-#define CONFIG_SYS_TEXT_BASE		0
+
+/* hao, changed this accroding to the address where the image is loaded. 
+ * Use "info roms" in qemu to see the address */
+#define CONFIG_SYS_TEXT_BASE		0x10000
 #define CONFIG_SYS_SDRAM_BASE		0
 #define CONFIG_SYS_SDRAM_SIZE		0x40000000
 #define CONFIG_SYS_MEMTEST_START	CONFIG_SYS_SDRAM_BASE
@@ -30,7 +33,7 @@
 
 /* XPSS Serial driver */
 #define CONFIG_ZYNQ_SERIAL
-#define CONFIG_ZYNQ_SERIAL_BASEADDR0	0xE0001000
+#define CONFIG_ZYNQ_SERIAL_BASEADDR0	0xE0000000
 #define CONFIG_ZYNQ_SERIAL_BAUDRATE0	CONFIG_BAUDRATE
 #define CONFIG_ZYNQ_SERIAL_CLOCK0	50000000
 

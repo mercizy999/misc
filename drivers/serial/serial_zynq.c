@@ -9,6 +9,7 @@
 #include <watchdog.h>
 #include <asm/io.h>
 #include <linux/compiler.h>
+#include "configs/zynq.h"
 #include <serial.h>
 
 #define ZYNQ_UART_SR_TXFULL	0x00000010 /* TX FIFO full */

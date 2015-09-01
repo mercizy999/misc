@@ -378,7 +378,11 @@ void board_init_f(ulong bootflag)
 	addr &= ~(4096 - 1);
 
 	/* hao - set load address */
+#ifdef CONFIG_ZYNQ
 	addr = 0x3fa10000; 
+#else
+	addr = 0x7fa10000;
+#endif
 	debug("Reserving %ldk for U-Boot at: %08lx\n", gd->mon_len >> 10, addr);
 
 #ifndef CONFIG_SPL_BUILD

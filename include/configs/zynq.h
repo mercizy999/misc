@@ -129,6 +129,32 @@
 #define CONFIG_SYS_HUSH_PARSER
 #define CONFIG_SYS_PROMPT_HUSH_PS2	"> "
 
+/* boot argument */
+#define CONFIG_ETHADDR 00:e0:0c:bc:e5:61
+#define CONFIG_IPADDR 192.168.2.102
+#define CONFIG_NETMASK 255.255.255.0
+#define CONFIG_SERVERIP 192.168.2.100
+#define CONFIG_GATEWAYIP 192.168.2.100
+
+#define CONFIG_RAMBOOT_COMMAND \
+	"tftp $loadaddr $loadfile;" \
+	"tftp $ramdiskaddr $ramdiskfile;" \
+	"tftp $dtbaddr $dtbfile;" \
+	"bootm $loadaddr $ramdiskaddr $dtbaddr"
+
+#define CONFIG_EXTRA_ENV_SETTINGS \
+	"netdev=eth0\0" \
+	"loadaddr=3d000000\0" \
+	"bootfile=uImage\0" \
+	"ramdiskaddr=3e000000\0" \
+	"ramdiskfile=uRamDisk\0" \
+	"dtbaddr=3f000000\0" \
+	"dtbfile=zynq.dtb" \
+
+#define CONFIG_BOOTCOMMAND CONFIG_RAMBOOT_COMMAND
+#define CONFIG_BOOTDELAY		1
+#define CONFIG_ZERO_BOOTDELAY_CHECK
+
 /* OF */
 #define CONFIG_FIT
 #define CONFIG_OF_LIBFDT

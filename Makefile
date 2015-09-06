@@ -73,12 +73,13 @@ export ARCH=arm
 
 # ARM
 ifeq ($(ARCH),arm)
-export CROSS_COMPILE=arm-qhao-linux-gnueabi-
+export CROSS_COMPILE=arm-linux-gnueabi-
 # below shall be added to arch/arm/boot/Makefile Ln57
-export CP_IMAGE=$(CROSS_COMPILE)objdump -h $< > ~/Desktop/share/bootdump.txt; \
-        $(CROSS_COMPILE)objdump -t $< >> ~/Desktop/share/bootdump.txt; \
-        $(CROSS_COMPILE)objdump -D $< >> ~/Desktop/share/bootdump.txt; \
-		cp $@ ~/Desktop/$(ARCH)/qemu_img/u-boot.bin
+export CP_IMAGE=cp $@ ~/Desktop/$(ARCH)/zynq_qemu/u-boot.bin
+# export CP_IMAGE=$(CROSS_COMPILE)objdump -h $< > ~/Desktop/share/bootdump.txt; \
+#        $(CROSS_COMPILE)objdump -t $< >> ~/Desktop/share/bootdump.txt; \
+#        $(CROSS_COMPILE)objdump -D $< >> ~/Desktop/share/bootdump.txt; \
+#		cp $@ ~/Desktop/$(ARCH)/zynq_qemu/u-boot.bin
 endif
 
 ifeq ($(ARCH),powerpc)
